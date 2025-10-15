@@ -1,265 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garrett's Carolina BBQ Auction & Thanksgiving</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garrett’s Carolina BBQ – GCS Auction</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fff7ed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #000;
       margin: 0;
       padding: 0;
     }
 
-    /* General Form Styling */
-    .form-section {
-      background: #fff8e7;
-      padding: 30px 20px;
-      max-width: 700px;
-      margin: 20px auto 60px;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-    }
-
-    .form-section h2 {
+    header {
+      background-color: #000;
+      color: #fff;
       text-align: center;
-      color: #a52a2a;
-      margin-bottom: 20px;
+      padding: 1.5rem 0;
     }
 
-    .form-section label {
-      margin-top: 10px;
-      font-weight: bold;
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
     }
 
-    .form-section input,
-    .form-section select,
-    .form-section textarea {
-      margin-top: 5px;
-      padding: 8px;
-      border-radius: 5px;
+    main {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-top: 8px solid #c46a1b; /* Fall accent color */
+    }
+
+    h2 {
+      color: #c46a1b;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      padding: 0.5rem;
       border: 1px solid #ccc;
-      font-size: 1em;
+      border-radius: 8px;
+      margin-top: 0.3rem;
     }
 
-    .form-section select[multiple] {
-      height: 80px;
+    .options {
+      margin-top: 0.5rem;
     }
 
-    .form-section button {
-      margin-top: 20px;
-      padding: 12px;
-      background-color: #a52a2a;
-      color: white;
-      font-size: 1.2em;
+    .options label {
+      font-weight: normal;
+      display: block;
+      margin-left: 1rem;
+    }
+
+    button {
+      background-color: #c46a1b;
+      color: #fff;
       border: none;
       border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-top: 1.5rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
-    .form-section button:hover {
-      background-color: #8b0000;
+    button:hover {
+      background-color: #a85917;
     }
 
-    .thank-you-message {
+    .thank-you {
       display: none;
+      text-align: center;
       color: green;
-      text-align: center;
-      margin-top: 10px;
       font-weight: bold;
+      margin-top: 1rem;
     }
 
-    /* Thanksgiving Flyer Styling */
-    .flyer {
-      background: linear-gradient(to bottom, #ffe5b4, #ffd699);
-      padding: 30px 20px;
-      border-radius: 15px;
-      max-width: 700px;
-      margin: 40px auto;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    .payment-section {
       text-align: center;
+      margin-top: 2rem;
     }
 
-    .flyer h1 {
-      color: #a52a2a;
-      font-size: 2.5em;
-      margin-bottom: 10px;
+    .payment-button {
+      background-color: #3d95ce; /* Venmo blue as default, will override for Square */
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      margin: 0.5rem;
     }
 
-    .flyer .subtitle {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-      font-style: italic;
+    .venmo-button {
+      background-color: #3d95ce;
+    }
+    .square-button {
+      background-color: #28a745; /* green for card payment */
     }
 
-    .menu {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
+    .payment-button:hover {
+      opacity: 0.9;
     }
 
-    .menu-column h2 {
-      font-size: 1.4em;
-      margin-bottom: 10px;
-      color: #8b0000;
-    }
-
-    .menu-column ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 20px;
-    }
-
-    .menu-column li {
-      font-size: 1.1em;
-      margin: 5px 0;
-    }
-
-    .flyer .contact {
-      font-size: 1.2em;
-      margin-bottom: 5px;
-    }
-
-    .flyer .note {
-      font-size: 1em;
+    footer {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      font-size: 0.9rem;
       color: #333;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Garrett’s Carolina BBQ – GCS Auction</h1>
+  </header>
 
-  <!-- Original Auction Section -->
-  <section id="auction">
-    <!-- PASTE YOUR ORIGINAL AUCTION HTML HERE -->
-    <!-- Example placeholder: -->
-    <div class="form-section">
-      <h2>BBQ Auction Order Form</h2>
-      <form action="https://formspree.io/f/xzzjyawp" method="POST">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required>
+  <main>
+    <h2>Place Your Catering Order</h2>
+    <form id="cateringForm" action="https://formspree.io/f/mgvnrkda" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="Name" required />
 
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="Email" required />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="Phone" required />
 
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address">
-
-        <label for="auction-items">Select Auction Items:</label>
-        <select id="auction-items" name="items[]" multiple required>
-          <option value="smoked-turkey">Smoked Turkey Breast</option>
-          <option value="whole-turkey">Whole Turkey</option>
-          <option value="spiral-ham">Spiral Ham</option>
-        </select>
-
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" required>
-
-        <label for="notes">Special Notes:</label>
-        <textarea id="notes" name="notes" placeholder="Allergies, special requests, etc."></textarea>
-
-        <label for="payment-method">Payment Method:</label>
-        <select id="payment-method" name="payment-method" required>
-          <option value="">--Select Payment Method--</option>
-          <option value="venmo">Venmo</option>
-          <option value="square">Square</option>
-        </select>
-
-        <button type="submit">Submit Auction Order</button>
-        <p class="thank-you-message">Thank you! Your auction order has been submitted.</p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Thanksgiving Flyer & Order Form -->
-  <section class="flyer">
-    <div class="flyer-content">
-      <h1>🍗 Garrett's Carolina BBQ 🍖</h1>
-      <p class="subtitle">Thanksgiving Catering – Order Now!</p>
-
-      <div class="menu">
-        <div class="menu-column">
-          <h2>Meats</h2>
-          <ul>
-            <li>Smoked Turkey Breast</li>
-            <li>Whole Turkey</li>
-            <li>Spiral Ham</li>
-          </ul>
-        </div>
-
-        <div class="menu-column">
-          <h2>Sides</h2>
-          <ul>
-            <li>Dressing</li>
-            <li>Cranberry Sauce</li>
-          </ul>
-        </div>
+      <label>Choose 1 Meat</label>
+      <div class="options">
+        <label><input type="radio" name="Meat" value="NC Style Smoked Pulled Pork" required /> NC Style Smoked Pulled Pork</label>
+        <label><input type="radio" name="Meat" value="Bourbon Chicken" /> Bourbon Chicken</label>
       </div>
 
-      <p class="contact">📞 Call or Text: <strong>336-467-1919</strong></p>
-      <p class="note">Pickup: Thanksgiving Morning, 9–11 AM</p>
-    </div>
-  </section>
+      <label>Choose 2 Sides</label>
+      <div class="options">
+        <label><input type="checkbox" name="Sides" value="Grandma Griffin’s Slaw" /> Grandma Griffin’s Slaw</label>
+        <label><input type="checkbox" name="Sides" value="Green Beans with Bacon" /> Green Beans with Bacon</label>
+        <label><input type="checkbox" name="Sides" value="Cheesy Potatoes" /> Cheesy Potatoes</label>
+        <label><input type="checkbox" name="Sides" value="Roasted Red Potatoes" /> Roasted Red Potatoes</label>
+      </div>
 
-  <section class="form-section">
-    <h2>Thanksgiving Catering Order Form</h2>
-    <form action="https://formspree.io/f/xzzjyawp" method="POST">
-      <label for="thanksgiving-name">Name:</label>
-      <input type="text" id="thanksgiving-name" name="name" required>
-
-      <label for="thanksgiving-phone">Phone Number:</label>
-      <input type="tel" id="thanksgiving-phone" name="phone" required>
-
-      <label for="meat">Choose Meat:</label>
-      <select id="meat" name="meat" required>
-        <option value="">--Select Meat--</option>
-        <option value="smoked-turkey">Smoked Turkey Breast</option>
-        <option value="whole-turkey">Whole Turkey</option>
-        <option value="spiral-ham">Spiral Ham</option>
-      </select>
-
-      <label for="sides">Choose Sides:</label>
-      <select id="sides" name="sides[]" multiple required>
-        <option value="dressing">Dressing</option>
-        <option value="cranberry-sauce">Cranberry Sauce</option>
-      </select>
-
-      <label for="notes">Special Notes:</label>
-      <textarea id="notes" name="notes" placeholder="Allergies or special requests"></textarea>
+      <label>Choose 1 Dessert</label>
+      <div class="options">
+        <label><input type="radio" name="Dessert" value="Banana Pudding" required /> Banana Pudding</label>
+        <label><input type="radio" name="Dessert" value="Peach Cobbler" /> Peach Cobbler</label>
+      </div>
 
       <button type="submit">Submit Order</button>
-      <p class="thank-you-message">Thank you! Your order has been submitted.</p>
+      <p class="thank-you">Thank you for your order!</p>
     </form>
-  </section>
+
+    <div class="payment-section">
+      <p><strong>After submitting your order, please send payment via one of the options below:</strong></p>
+      <a href="https://venmo.com/garrett-griffin-29" target="_blank" class="payment-button venmo-button">Pay with Venmo</a>
+      <a href="https://square.link/u/BiMBYPQn?src=sheet" target="_blank" class="payment-button square-button">Pay with Card (Square)</a>
+      <p>Venmo: @garrett-griffin-29</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Questions? Call or text <strong>336-467-1919</strong></p>
+  </footer>
 
   <script>
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-      const thankYou = form.querySelector('.thank-you-message');
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(response => {
-          if (response.ok) {
-            thankYou.style.display = 'block';
-            form.reset();
-          } else {
-            alert('Oops! There was a problem submitting your form.');
-          }
-        }).catch(error => {
-          alert('Oops! There was a problem submitting your form.');
-        });
+    const form = document.getElementById('cateringForm');
+    const thankYou = document.querySelector('.thank-you');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
       });
+
+      if (response.ok) {
+        thankYou.style.display = 'block';
+        form.reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('There was an issue submitting your order. Please try again.');
+      }
     });
   </script>
-
 </body>
 </html>
