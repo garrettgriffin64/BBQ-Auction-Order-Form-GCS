@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garrett's Carolina BBQ</title>
+  <title>Garrett's Carolina BBQ Auction & Thanksgiving</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,7 +12,66 @@
       padding: 0;
     }
 
-    /* Flyer Section */
+    /* General Form Styling */
+    .form-section {
+      background: #fff8e7;
+      padding: 30px 20px;
+      max-width: 700px;
+      margin: 20px auto 60px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .form-section h2 {
+      text-align: center;
+      color: #a52a2a;
+      margin-bottom: 20px;
+    }
+
+    .form-section label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    .form-section select[multiple] {
+      height: 80px;
+    }
+
+    .form-section button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #a52a2a;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-section button:hover {
+      background-color: #8b0000;
+    }
+
+    .thank-you-message {
+      display: none;
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Thanksgiving Flyer Styling */
     .flyer {
       background: linear-gradient(to bottom, #ffe5b4, #ffd699);
       padding: 30px 20px;
@@ -68,75 +127,56 @@
       font-size: 1em;
       color: #333;
     }
-
-    /* Form Sections */
-    .form-section {
-      background: #fff8e7;
-      padding: 30px 20px;
-      max-width: 700px;
-      margin: 20px auto 60px;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-    }
-
-    .form-section h2 {
-      text-align: center;
-      color: #a52a2a;
-      margin-bottom: 20px;
-    }
-
-    .form-section form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-section label {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .form-section input,
-    .form-section select,
-    .form-section textarea {
-      margin-top: 5px;
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-
-    .form-section select[multiple] {
-      height: 80px;
-    }
-
-    .form-section button {
-      margin-top: 20px;
-      padding: 12px;
-      background-color: #a52a2a;
-      color: white;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .form-section button:hover {
-      background-color: #8b0000;
-    }
-
-    .thank-you-message {
-      display: none;
-      color: green;
-      text-align: center;
-      margin-top: 10px;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Flyer Section -->
+  <!-- Original Auction Section -->
+  <section id="auction">
+    <!-- PASTE YOUR ORIGINAL AUCTION HTML HERE -->
+    <!-- Example placeholder: -->
+    <div class="form-section">
+      <h2>BBQ Auction Order Form</h2>
+      <form action="https://formspree.io/f/xzzjyawp" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+
+        <label for="auction-items">Select Auction Items:</label>
+        <select id="auction-items" name="items[]" multiple required>
+          <option value="smoked-turkey">Smoked Turkey Breast</option>
+          <option value="whole-turkey">Whole Turkey</option>
+          <option value="spiral-ham">Spiral Ham</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+
+        <label for="notes">Special Notes:</label>
+        <textarea id="notes" name="notes" placeholder="Allergies, special requests, etc."></textarea>
+
+        <label for="payment-method">Payment Method:</label>
+        <select id="payment-method" name="payment-method" required>
+          <option value="">--Select Payment Method--</option>
+          <option value="venmo">Venmo</option>
+          <option value="square">Square</option>
+        </select>
+
+        <button type="submit">Submit Auction Order</button>
+        <p class="thank-you-message">Thank you! Your auction order has been submitted.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Thanksgiving Flyer & Order Form -->
   <section class="flyer">
     <div class="flyer-content">
       <h1>🍗 Garrett's Carolina BBQ 🍖</h1>
@@ -166,31 +206,33 @@
     </div>
   </section>
 
-  <!-- Auction Form Section -->
   <section class="form-section">
-    <h2>BBQ Auction Order Form</h2>
+    <h2>Thanksgiving Catering Order Form</h2>
     <form action="https://formspree.io/f/xzzjyawp" method="POST">
-      <label for="auction-name">Name:</label>
-      <input type="text" id="auction-name" name="name" required>
+      <label for="thanksgiving-name">Name:</label>
+      <input type="text" id="thanksgiving-name" name="name" required>
 
-      <label for="auction-phone">Phone Number:</label>
-      <input type="tel" id="auction-phone" name="phone" required>
+      <label for="thanksgiving-phone">Phone Number:</label>
+      <input type="tel" id="thanksgiving-phone" name="phone" required>
 
-      <label for="auction-item">Select Item:</label>
-      <select id="auction-item" name="item" required>
-        <option value="">--Select an Item--</option>
-        <option value="turkey-breast">Smoked Turkey Breast</option>
+      <label for="meat">Choose Meat:</label>
+      <select id="meat" name="meat" required>
+        <option value="">--Select Meat--</option>
+        <option value="smoked-turkey">Smoked Turkey Breast</option>
         <option value="whole-turkey">Whole Turkey</option>
         <option value="spiral-ham">Spiral Ham</option>
       </select>
 
-      <label for="auction-quantity">Quantity:</label>
-      <input type="number" id="auction-quantity" name="quantity" min="1" required>
+      <label for="sides">Choose Sides:</label>
+      <select id="sides" name="sides[]" multiple required>
+        <option value="dressing">Dressing</option>
+        <option value="cranberry-sauce">Cranberry Sauce</option>
+      </select>
 
-      <label for="auction-notes">Special Notes:</label>
-      <textarea id="auction-notes" name="notes" placeholder="Allergies or special requests"></textarea>
+      <label for="notes">Special Notes:</label>
+      <textarea id="notes" name="notes" placeholder="Allergies or special requests"></textarea>
 
-      <button type="submit">Submit Auction Order</button>
+      <button type="submit">Submit Order</button>
       <p class="thank-you-message">Thank you! Your order has been submitted.</p>
     </form>
   </section>
@@ -221,5 +263,3 @@
 
 </body>
 </html>
-
-
