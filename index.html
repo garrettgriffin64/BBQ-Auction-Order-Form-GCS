@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garrett’s Carolina BBQ – GCS Auction</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-top: 8px solid #c46a1b; /* Fall accent color */
+    }
+
+    h2 {
+      color: #c46a1b;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 0.3rem;
+    }
+
+    .options {
+      margin-top: 0.5rem;
+    }
+
+    .options label {
+      font-weight: normal;
+      display: block;
+      margin-left: 1rem;
+    }
+
+    button {
+      background-color: #c46a1b;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a85917;
+    }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .payment-button {
+      background-color: #3d95ce; /* Venmo blue as default, will override for Square */
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .venmo-button {
+      background-color: #3d95ce;
+    }
+    .square-button {
+      background-color: #28a745; /* green for card payment */
+    }
+
+    .payment-button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Garrett’s Carolina BBQ – GCS Auction</h1>
+  </header>
+
+  <main>
+    <h2>Place Your Catering Order</h2>
+    <form id="cateringForm" action="https://formspree.io/f/mgvnrkda" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="Name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="Email" required />
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="Phone" required />
+
+      <label>Choose 1 Meat</label>
+      <div class="options">
+        <label><input type="radio" name="Meat" value="NC Style Smoked Pulled Pork" required /> NC Style Smoked Pulled Pork</label>
+        <label><input type="radio" name="Meat" value="Bourbon Chicken" /> Bourbon Chicken</label>
+      </div>
+
+      <label>Choose 2 Sides</label>
+      <div class="options">
+        <label><input type="checkbox" name="Sides" value="Grandma Griffin’s Slaw" /> Grandma Griffin’s Slaw</label>
+        <label><input type="checkbox" name="Sides" value="Green Beans with Bacon" /> Green Beans with Bacon</label>
+        <label><input type="checkbox" name="Sides" value="Cheesy Potatoes" /> Cheesy Potatoes</label>
+        <label><input type="checkbox" name="Sides" value="Roasted Red Potatoes" /> Roasted Red Potatoes</label>
+      </div>
+
+      <label>Choose 1 Dessert</label>
+      <div class="options">
+        <label><input type="radio" name="Dessert" value="Banana Pudding" required /> Banana Pudding</label>
+        <label><input type="radio" name="Dessert" value="Peach Cobbler" /> Peach Cobbler</label>
+      </div>
+
+      <button type="submit">Submit Order</button>
+      <p class="thank-you">Thank you for your order!</p>
+    </form>
+
+    <div class="payment-section">
+      <p><strong>After submitting your order, please send payment via one of the options below:</strong></p>
+      <a href="https://venmo.com/garrett-griffin-29" target="_blank" class="payment-button venmo-button">Pay with Venmo</a>
+      <a href="https://square.link/u/BiMBYPQn?src=sheet" target="_blank" class="payment-button square-button">Pay with Card (Square)</a>
+      <p>Venmo: @garrett-griffin-29</p>
+    </div>
+<hr style="margin: 3rem 0; border: none; border-top: 4px solid #c46a1b;" />
+
+<h2 style="text-align:center; color:#c46a1b;">🦃 Thanksgiving Catering Menu</h2>
+
+<iframe
+  src="garrett_thanksgiving_flyer_8.5x11_phone_above_footer.pdf"
+  width="100%"
+  height="900"
+  style="border:none; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+</iframe>
+
+  </main>
+
+  <footer>
+    <p>Questions? Call or text <strong>336-467-1919</strong></p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('cateringForm');
+    const thankYou = document.querySelector('.thank-you');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        thankYou.style.display = 'block';
+        form.reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('There was an issue submitting your order. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
