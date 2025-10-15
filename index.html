@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garrett's Carolina BBQ - Thanksgiving Catering</title>
+  <title>Garrett's Carolina BBQ</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -69,8 +69,8 @@
       color: #333;
     }
 
-    /* Order Form */
-    .order-form {
+    /* Form Sections */
+    .form-section {
       background: #fff8e7;
       padding: 30px 20px;
       max-width: 700px;
@@ -79,25 +79,25 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.15);
     }
 
-    .order-form h2 {
+    .form-section h2 {
       text-align: center;
       color: #a52a2a;
       margin-bottom: 20px;
     }
 
-    .order-form form {
+    .form-section form {
       display: flex;
       flex-direction: column;
     }
 
-    .order-form label {
+    .form-section label {
       margin-top: 10px;
       font-weight: bold;
     }
 
-    .order-form input,
-    .order-form select,
-    .order-form textarea {
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
       margin-top: 5px;
       padding: 8px;
       border-radius: 5px;
@@ -105,11 +105,11 @@
       font-size: 1em;
     }
 
-    .order-form select[multiple] {
+    .form-section select[multiple] {
       height: 80px;
     }
 
-    .order-form button {
+    .form-section button {
       margin-top: 20px;
       padding: 12px;
       background-color: #a52a2a;
@@ -121,7 +121,7 @@
       transition: background-color 0.3s ease;
     }
 
-    .order-form button:hover {
+    .form-section button:hover {
       background-color: #8b0000;
     }
 
@@ -166,57 +166,55 @@
     </div>
   </section>
 
-  <!-- Order Form Section -->
-  <section class="order-form">
-    <h2>Place Your Order</h2>
+  <!-- Auction Form Section -->
+  <section class="form-section">
+    <h2>BBQ Auction Order Form</h2>
     <form action="https://formspree.io/f/xzzjyawp" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+      <label for="auction-name">Name:</label>
+      <input type="text" id="auction-name" name="name" required>
 
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" required>
+      <label for="auction-phone">Phone Number:</label>
+      <input type="tel" id="auction-phone" name="phone" required>
 
-      <label for="meat">Choose Meat:</label>
-      <select id="meat" name="meat" required>
-        <option value="">--Select Meat--</option>
-        <option value="smoked-turkey">Smoked Turkey Breast</option>
+      <label for="auction-item">Select Item:</label>
+      <select id="auction-item" name="item" required>
+        <option value="">--Select an Item--</option>
+        <option value="turkey-breast">Smoked Turkey Breast</option>
         <option value="whole-turkey">Whole Turkey</option>
         <option value="spiral-ham">Spiral Ham</option>
       </select>
 
-      <label for="sides">Choose Sides:</label>
-      <select id="sides" name="sides[]" multiple required>
-        <option value="dressing">Dressing</option>
-        <option value="cranberry-sauce">Cranberry Sauce</option>
-      </select>
+      <label for="auction-quantity">Quantity:</label>
+      <input type="number" id="auction-quantity" name="quantity" min="1" required>
 
-      <label for="notes">Special Notes:</label>
-      <textarea id="notes" name="notes" placeholder="Allergies or special requests"></textarea>
+      <label for="auction-notes">Special Notes:</label>
+      <textarea id="auction-notes" name="notes" placeholder="Allergies or special requests"></textarea>
 
-      <button type="submit">Submit Order</button>
+      <button type="submit">Submit Auction Order</button>
       <p class="thank-you-message">Thank you! Your order has been submitted.</p>
     </form>
   </section>
 
   <script>
-    const form = document.querySelector('form');
-    const thankYou = document.querySelector('.thank-you-message');
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          thankYou.style.display = 'block';
-          form.reset();
-        } else {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      const thankYou = form.querySelector('.thank-you-message');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(response => {
+          if (response.ok) {
+            thankYou.style.display = 'block';
+            form.reset();
+          } else {
+            alert('Oops! There was a problem submitting your form.');
+          }
+        }).catch(error => {
           alert('Oops! There was a problem submitting your form.');
-        }
-      }).catch(error => {
-        alert('Oops! There was a problem submitting your form.');
+        });
       });
     });
   </script>
